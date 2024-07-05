@@ -4,15 +4,18 @@ public class Solution
 {
     public bool IsAnagram(string s, string t)
     {
-        int[] arrays = new int[26];
-        for(int i = 0; i < s.Length; i++)
+        if (s.Length != t.Length)
         {
-            arrays[s[i] - 'a']++;
-            arrays[t[i] - 'a']--;
+            return false;
         }
-        for(int i = 0; i < 26; i++)
+
+        var charArrayS = s.ToCharArray();
+        var charArrayT = t.ToCharArray();
+        Array.Sort(charArrayS);
+        Array.Sort(charArrayT);
+        for (int i = 0; i < charArrayS.Length; i++)
         {
-            if(arrays[i] != 0)
+            if (charArrayS[i] != charArrayT[i])
             {
                 return false;
             }
@@ -20,35 +23,16 @@ public class Solution
 
         return true;
     }
-}
 
-public class Program
-{
-    public static void Main(string[] args)
+    public class Program
     {
-        string s = "ehllo";
-        string t = "hello";
-        int[] sArray = new int[s.Length];
-        int[] tArray = new int[t.Length];
-
-        // Populate sArray and tArray with ASCII values of characters in s and t
-        for (int i = 0; i < s.Length; i++)
+        public static void Main(string[] args)
         {
-            sArray[i] = s[i];
-            tArray[i] = t[i];
-        }
-
-        // Print the arrays
-        Console.WriteLine("Array of characters in s string:");
-        for (int i = 0; i < sArray.Length; i++)
-        {
-            Console.WriteLine(sArray[i]);
-        }
-
-        Console.WriteLine("Array of characters in t string:");
-        for (int i = 0; i < tArray.Length; i++)
-        {
-            Console.WriteLine(tArray[i]);
+            string s = "ehllo";
+            string t = "hello";
+            Solution solution = new Solution();
+            
+            Console.WriteLine(solution.IsAnagram(s, t));
         }
     }
 }
