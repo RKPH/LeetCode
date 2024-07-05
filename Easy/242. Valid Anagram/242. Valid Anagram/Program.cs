@@ -28,7 +28,7 @@ public class Solution
     {
         public static void Main(string[] args)
         {
-            string s = "ehllo";
+            string s = "ehlloadđ";
             string t = "hello";
             Solution solution = new Solution();
             
