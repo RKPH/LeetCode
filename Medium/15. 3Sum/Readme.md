@@ -1,4 +1,4 @@
-﻿# Three Sum Problem
+Three Sum Problem
 
 ## Problem Statement
 
